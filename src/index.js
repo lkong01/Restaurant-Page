@@ -1,17 +1,26 @@
 import "./style.css";
-import RestaurantImg from "././jason-leung-poI7DelFiVA-unsplash.jpg";
+import initialPage from "./initial-page";
+import Menu from "./menu";
+import Contact from "./contact";
 
-const content = document.querySelector("#content");
+initialPage();
 
-const h1 = document.createElement("h1");
-h1.innerText = "Restaurant";
-content.appendChild(h1);
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
 
-const p = document.createElement("p");
-p.innerText =
-  "Very wonderful Restaurant. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo doloremque accusantium iste deserunt expedita quisquam nam cum earum, explicabo sit eveniet, beatae saepe accusamus culpa perferendis vel cupiditate non facilis";
-content.appendChild(p);
+const menuTab = document.querySelector(".menu-btn");
+menuTab.onclick = () => {
+  const content = document.querySelector("#content");
+  removeAllChildNodes(content);
+  Menu();
+};
 
-const img = new Image();
-img.src = RestaurantImg;
-content.appendChild(img);
+const contactTab = document.querySelector(".contact-btn");
+contactTab.addEventListener("click", () => {
+  const content = document.querySelector("#content");
+  removeAllChildNodes(content);
+  Contact();
+});
